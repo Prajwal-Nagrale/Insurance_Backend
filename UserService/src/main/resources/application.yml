@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/registration
-    username: 
-    password: 
+    url: jdbc:postgresql://localhost:5432/insurancebackend
+    username: postgres
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
