@@ -36,7 +36,10 @@ public class User implements UserDetails{
 	
 	private String email;
 	
-	private String  password;
+	private String password;
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 
 	@Override
@@ -49,5 +52,29 @@ public class User implements UserDetails{
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return email;
+	}
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 }
