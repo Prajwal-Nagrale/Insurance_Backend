@@ -7,7 +7,6 @@ import com.cg.users.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +24,7 @@ public class RegisterServiceImpl implements  RegisterService{
 
     @Override
     public AuthResponse register(RegisterEntity registerEntity) {
+
             var user=User.builder()
                     .firstName(registerEntity.getFirstName())
                     .lastName(registerEntity.getLastName())
@@ -32,9 +32,11 @@ public class RegisterServiceImpl implements  RegisterService{
                     .password(passwordEncoder.encode(registerEntity.getPassword()))
                     .role(registerEntity.getRole())
                     .build();
-
+        if (userRepository.findByEmail(user.getEmail()).isEmpty()){
             userRepository.save(user);
-            String jwtToken=jwtService.generateToke(user);
+            String jwtToken=jwtService.generateToken(user);
             return AuthResponse.builder().accessToken(jwtToken).build();
+        }
+        return AuthResponse.builder().accessToken("User Already Exists").build();
     }
 }
