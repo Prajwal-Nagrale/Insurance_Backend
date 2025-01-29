@@ -13,7 +13,7 @@ public class AdminController {
 
     @GetMapping
     public String getAdmin() {
-        return "Secured Endpoint :: Get - Admin Controller";
+        return "Secured Endpoint :: Get - Admin Controller Here";
     }
 
     @PostMapping
