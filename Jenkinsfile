@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo 'cleaning project ...'
                 
-                  sh "mvn clean "
+                  sh "mvn clean -f UserService/pom.xml"
                 
             }
         }
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "artificat contruction"
               
-                  sh "mvn package"
+                  sh "mvn package -f UserService/pom.xml"
                 
                 
             }
