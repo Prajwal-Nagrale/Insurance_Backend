@@ -1,10 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage ('Build') {
-      steps {
-        echo 'Running Build Automation'
+    stage('Cleaning the project') {
+             
+            steps {
+                echo 'cleaning project ...'
+                sh 'mvn clean'
+            }
+        }
+        
+    stage('Artifact Construction') {
+             
+            steps {
+                echo "artificat contruction"
+                sh 'mvn package'
+            }
       }
-    }
   }
 }
