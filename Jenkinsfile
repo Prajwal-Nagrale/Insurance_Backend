@@ -1,4 +1,7 @@
 pipeline {
+  tools {
+  maven 'praj-maven'
+}
   agent any
   stages {
     stage('Cleaning the project') {
