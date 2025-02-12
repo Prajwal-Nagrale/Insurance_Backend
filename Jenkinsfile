@@ -5,9 +5,9 @@ pipeline {
              
             steps {
                 echo 'cleaning project ...'
-                withMaven {
+                
                   sh "mvn clean "
-                }
+                
             }
         }
         
@@ -15,9 +15,9 @@ pipeline {
              
             steps {
                 echo "artificat contruction"
-              withMaven {
+              
                   sh "mvn package"
-                }
+                
                 
             }
       }
