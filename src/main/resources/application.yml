@@ -8,6 +8,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+apiKey : ee5d1720ced4b5c929c332a4cc1d86cbf40dd5d39e45f2b81b97188f973fcbf68e179a9b2a3cd0b659eb313479e77fba2b192062a7f4be0c7bd0951aeda8812e

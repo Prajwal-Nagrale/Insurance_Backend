@@ -1,6 +1,13 @@
 package com.cg.users.entity;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,18 +23,39 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	
+	private String email;
+	
+	private String password;
 
-    private String firstName;
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	
 
-    private String lastName;
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return role.getAuthorities();
+	}
 
-    private String email;
-
-    private String  password;
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return email;
+	}
+	@Override
+	public String getPassword() {
+		return password;
+	}
 
 }
